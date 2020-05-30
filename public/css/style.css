@@ -1,0 +1,42 @@
+body{
+    
+}
+
+#mainNav {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+#navbar-brand{
+    margin-left: 10px;
+}
+
+#menu{
+    margin-top: 20px ;
+    margin-left: 10px;
+}
+
+section{
+    margin: 40px;
+}
+
+#input-file{
+    margin-bottom: 40px;
+}
+
+#input-teks{
+    margin-top: 0px;
+    height: 100%;
+    width: 638px;
+}
+
+#output{
+    height: 374px;
+    width: 638px;
+    padding: 10px;
+    margin-top: 24px;
+    overflow: auto;
+    border: 1px solid #CED4DA;
+    outline: 2px;
+}
