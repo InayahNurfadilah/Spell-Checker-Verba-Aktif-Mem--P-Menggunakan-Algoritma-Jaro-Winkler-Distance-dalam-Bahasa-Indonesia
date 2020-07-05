@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'InputController@index');
+Route::post('/store', 'InputController@JaroWinkler'); 
+//Route::post('/store', 'CobaController@JaroWinkler'); 
