@@ -35,23 +35,41 @@
 
     <section>
         <div class="container">
-            <h1 class="text-center mt-4">Spell Check mem+p</h1>
+            <h1 class="text-center mt-4">Daftar Verba Baku</h1>
             <h5 class="text-center font-weight-light mb-4">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br> Asperiores ullam tempore iste minima ipsum vero dolores cupiditate, nam itaque vitae?
             </h5>
+
             <div class="row justify-content-center">
                 <div class="col-sm-8">
                     <div class="card shadow">
                         <div class="card-body">
-                            <form method="POST" action="{{ url('/store') }}">
-                                {{ csrf_field() }}
-                                <textarea name="input_teks" style="border: none; width: 698px; height: 296px; " placeholder="Masukkan kata atau Kalimat">@if(isset($str)) {{$str}} @endif</textarea>
-                                <div class="col text-center">
-                                    <button class="btn btn-danger" type="reset">Reset</button>
-                                    <button class="btn btn-primary" type="submit">Cek</button>
-                                </div>
+                            <form action="/cari-verba" method="GET">
+                                <input type="text" class="form-control" placeholder="Cari Verba..." value="{{ request('cari') }}" aria-label="Search" aria-describedby="basic-addon2" name="cari">
+                                <button class="btn btn-primary mt-2 mb-4" type="submit">Cari</button>
+                                <a href="{{ url('tabel-verba') }}" class="btn btn-success mt-2 mb-4">Show All</a>
                             </form>
                             
+                            <table class="table table-bordered">
+                                <thead class="table-active">
+                                    <tr>
+                                        <th scope="col" style="width: 50px">NO</th>
+                                        <th scope="col">Verba Baku</th>
+                                        <th scope="col">Kata Dasar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @php $no =  1 @endphp
+                                @foreach($target as $word)
+                                    <tr>
+                                        <td>{{ $no }}</td>
+                                        <td>{{ $word->Kata_Target }}</td>
+                                        <td>cek</td>
+                                    </tr>
+                                    @php $no++ @endphp
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

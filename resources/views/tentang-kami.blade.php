@@ -39,24 +39,6 @@
             <h5 class="text-center font-weight-light mb-4">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br> Asperiores ullam tempore iste minima ipsum vero dolores cupiditate, nam itaque vitae?
             </h5>
-            <div class="row justify-content-center">
-                <div class="col-sm-8">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <form method="POST" action="{{ url('/store') }}">
-                                {{ csrf_field() }}
-                                <textarea name="input_teks" style="border: none; width: 698px; height: 296px; " placeholder="Masukkan kata atau Kalimat">@if(isset($str)) {{$str}} @endif</textarea>
-                                <div class="col text-center">
-                                    <button class="btn btn-danger" type="reset">Reset</button>
-                                    <button class="btn btn-primary" type="submit">Cek</button>
-                                </div>
-                            </form>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </section>
 <!-- Optional JavaScript -->

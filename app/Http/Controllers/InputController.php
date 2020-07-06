@@ -7,56 +7,26 @@ use Illuminate\Support\Facades\DB;
 
 class InputController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        
-
         return view('index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function verba()
     {
-        //
+        $target = DB::table('target')->paginate(50);
+        return view('verba-table')->with('target', $target);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function preprocessing(Request $request)
-    {
-        //MENGAMBIL DATA DARI DATABASE KE DALAM VARIABEL ARRAY
-        $nontarget   = DB::table('nontarget')->pluck('Kata_NonTarget')->toArray(); //UNTUK FILTERING
-        $target      = DB::table('target')->pluck('Kata_Target')->toArray(); //
+    public function cari(Request $request){
+        $cari = $request->cari;
+        $target = DB::table('target')->where('Kata_Target', 'LIKE', '%' . $cari . '%')->get();
         
-        //MENGAMBIL DATA INPUT - TOKENIZING - CASE FOLDING
-        $str = $request->input_teks;
-        $arr = explode(" ", $str);
-        $arr = array_map('strtolower', $arr); //CASE FOLDING TO LOWERCASE
+        return view('cari')->with('target', $target);
+    }
 
-        //FILTER INPUT SEMUA YANG BERAWALAN MEM-
-        $filter = array_filter($arr, function($var){
-            return(stripos($var,'mem') !== false);
-        });
-        
-        //FILTER INPUT BERAWALAN MEM- YANG TIDAK ADA DI TABEL NON_VERBA (TARGET UNTUK DIGANTI)
-        $filterverb = array_diff(array_map("trim", $filter), array_map("trim", $nontarget));
-        
-        return $filterverb;
-
-        //return view('index')->with(['str' => $str, 'filterverb' => $filterverb, 'filter' => $filter, 'nonverba' => $nonverba]);
+    public function tentang(){
+        return view('tentang-kami');
     }
 
     private function getCommonCharacters( $string1, $string2, $allowedDistance ){
@@ -125,8 +95,6 @@ class InputController extends Controller
     public function JaroWinkler(Request $request, $PREFIXSCALE = 0.1 ){
         $str                = $request->input_teks;
         $arr                = explode(" ", $str);
-        $prep               = $this->preprocessing($request);
-        $prep               = array_values($prep);
         $target             = DB::table('target')->pluck('Kata_Target')->toArray();
         $target             = array_map("trim", $target);
         $nontarget          = DB::table('nontarget')->pluck('Kata_NonTarget')->toArray(); //UNTUK FILTERING

@@ -35,23 +35,47 @@
 
     <section>
         <div class="container">
-            <h1 class="text-center mt-4">Spell Check mem+p</h1>
+            <h1 class="text-center mt-4">Daftar Verba Baku</h1>
             <h5 class="text-center font-weight-light mb-4">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br> Asperiores ullam tempore iste minima ipsum vero dolores cupiditate, nam itaque vitae?
             </h5>
+
             <div class="row justify-content-center">
                 <div class="col-sm-8">
                     <div class="card shadow">
                         <div class="card-body">
-                            <form method="POST" action="{{ url('/store') }}">
-                                {{ csrf_field() }}
-                                <textarea name="input_teks" style="border: none; width: 698px; height: 296px; " placeholder="Masukkan kata atau Kalimat">@if(isset($str)) {{$str}} @endif</textarea>
-                                <div class="col text-center">
-                                    <button class="btn btn-danger" type="reset">Reset</button>
-                                    <button class="btn btn-primary" type="submit">Cek</button>
-                                </div>
+                            <form action="/cari-verba" method="GET">
+                                <input type="text" class="form-control" placeholder="Cari Verba..." aria-label="Search" aria-describedby="basic-addon2" name="cari">
+                                <button class="btn btn-primary mt-2 mb-4" type="submit">Cari</button>
                             </form>
-                            
+                            <table class="table table-bordered">
+                                <thead class="table-active">
+                                    <tr>
+                                        <th scope="col" style="width: 50px">NO</th>
+                                        <th scope="col">Verba Baku</th>
+                                        <th scope="col">Kata Dasar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @php $no = ($target->currentpage()-1)* $target->perpage() + 1 @endphp
+                                @foreach($target as $word)
+                                    <tr>
+                                        <td>{{ $no }}</td>
+                                        <td>{{ $word->Kata_Target }}</td>
+                                        <td>cek</td>
+                                    </tr>
+                                    @php $no++ @endphp
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="float-left">{{ $target->links('pagination.default') }}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6 class="float-right text-muted">Page {{ $target->currentPage() }} of {{ $target->lastPage() }}</h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

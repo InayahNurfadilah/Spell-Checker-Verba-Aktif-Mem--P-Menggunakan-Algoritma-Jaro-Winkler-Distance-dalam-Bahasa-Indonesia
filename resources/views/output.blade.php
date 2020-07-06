@@ -14,7 +14,9 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand"><b>spell checker</b></a>
+        <a href="{{ url('/') }}" class="navbar-brand">
+            <b>spell checker</b>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,10 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><b>Daftar Verba Baku</b></a>
+                    <a href="{{ url('/tabel-verba') }}" class="nav-link"><b>Daftar Verba Baku</b></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><b>Tentang Kami</b></a>
+                    <a href="{{ url('/tentang-kami') }}" class="nav-link"><b>Tentang Kami</b></a>
                 </li>
             </ul>
         </div>
@@ -77,7 +79,7 @@
                                     <th scope="col">NO</th>
                                     <th scope="col">Kata</th>
                                     <th scope="col">Suggestion</th>
-                                    <th scope="col">Nilai JWD</th>
+                                    <th scope="col">Nilai Akurasi JWD</th>
                                     </tr>
                                 </thead>
                                 <tbody>

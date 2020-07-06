@@ -13,4 +13,6 @@
 
 Route::get('/', 'InputController@index');
 Route::post('/store', 'InputController@JaroWinkler'); 
-//Route::post('/store', 'CobaController@JaroWinkler'); 
+Route::get('/tabel-verba', 'InputController@verba');
+Route::get('/cari-verba', 'InputController@cari');
+Route::get('/tentang-kami', 'InputController@tentang');
