@@ -36,12 +36,13 @@
     <section>
         <div class="container">
             <h1 class="text-center mt-4 mb-4">Spell Check mem+p</h1>
+            <h5 class="text-center font-weight-light mb-4">OUTPUT</h5>
             <div class="row justify-content-center">
                 <div class="col-sm-8">
                     <div class="card shadow">
-                        <div class="card-body" style="width: 698px; height: 380px; overflow-x: hidden;
-                        overflow-y: hidden;">
-                            <p class="text-justify" style="height: 296px;" id="p1">
+                        <div class="card-body" style="width: 698px; height: 380px">
+                            <p class="text-justify" style="height: 296px; overflow-x: auto;
+                        overflow-y: auto;" id="p1" >
                                 {!! $hasil !!}
                             </p>
                             <div class="col text-center">
@@ -100,10 +101,26 @@
                 </div>
             </div>
             @endif
-        </div>
+            <!-- <div class = "row justify-content-center mb-4">
+                <div class="col-sm-8">
+                    <div class="card-show">
+                        <div class="card-header"> <b> Prepocessing </b></div>
+                        <div class="card-body" style=" width: 698px; height: 380px; overflow-x:hidden; overflow-y:hidden;">
+                            <p class="text-justify" style="height: 80px;">
+                                {{ $input }}
+                            </p>
+                            <div class="col text-center">
+                                @php print_r($arr1) @endphp
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
     </section>
 <!-- Optional JavaScript -->
+
 <script>
+
 function copyToClipboard(element) {
     var $temp = $("<input>");
     $("body").append($temp);

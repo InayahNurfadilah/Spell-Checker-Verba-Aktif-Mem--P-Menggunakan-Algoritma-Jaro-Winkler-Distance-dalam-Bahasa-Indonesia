@@ -37,7 +37,7 @@
         <div class="container">
             <h1 class="text-center mt-4">Daftar Verba Baku</h1>
             <h5 class="text-center font-weight-light mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br> Asperiores ullam tempore iste minima ipsum vero dolores cupiditate, nam itaque vitae?
+                Daftar verba baku beserta kata dasarnya
             </h5>
 
             <div class="row justify-content-center">
@@ -64,7 +64,7 @@
                                     <tr>
                                         <td>{{ $no }}</td>
                                         <td>{{ $word->Kata_Target }}</td>
-                                        <td>cek</td>
+                                        <td>{{ $word->Kata_Dasar }}</td>
                                     </tr>
                                     @php $no++ @endphp
                                 @endforeach

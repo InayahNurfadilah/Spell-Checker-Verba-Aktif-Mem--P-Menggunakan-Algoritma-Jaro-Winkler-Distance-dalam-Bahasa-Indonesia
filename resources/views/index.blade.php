@@ -37,7 +37,8 @@
         <div class="container">
             <h1 class="text-center mt-4">Spell Check mem+p</h1>
             <h5 class="text-center font-weight-light mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br> Asperiores ullam tempore iste minima ipsum vero dolores cupiditate, nam itaque vitae?
+                sistem memperbaiki kata kerja transitif <b>mem+P</b> </br> 
+                sesuai dengan KBBI versi V dan kaidah morfologi Ejaan Bahasa Indonesia
             </h5>
             <div class="row justify-content-center">
                 <div class="col-sm-8">

@@ -33,12 +33,16 @@
         </div>
     </nav>
 
-    <section>
+    <section>            
         <div class="container">
-            <h1 class="text-center mt-4">Spell Check mem+p</h1>
-            <h5 class="text-center font-weight-light mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br> Asperiores ullam tempore iste minima ipsum vero dolores cupiditate, nam itaque vitae?
-            </h5>
+            <div class=""p-3 mb-2 bg-dark text-white>.bg-secondary
+                <!-- <h1 class="text-center mt-4">Spell Check mem+p</h1> -->
+                <h4 class="text-center"> Sistem ini membantu pekerjaan mengedit khusus verba transitif</br> berawalan huruf "P"</h4>
+                <br>
+                    <h5 class="text-center font-weight-light mb-4">
+                    <small class="text-muted"> present by Inayah Nurfadilah</br> © 2020</small>
+                </h5>
+            </div>
         </div>
     </section>
 <!-- Optional JavaScript -->

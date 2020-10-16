@@ -20,7 +20,7 @@ class InputController extends Controller
 
     public function cari(Request $request){
         $cari = $request->cari;
-        $target = DB::table('target')->where('Kata_Target', 'LIKE', '%' . $cari . '%')->get();
+        $target = DB::table('target')->where('Kata_Target', 'LIKE', '%' . $cari . '%')-> orWhere('Kata_Dasar', 'LIKE', '%' . $cari . '%')->get();
         
         return view('cari')->with('target', $target);
     }
@@ -94,6 +94,8 @@ class InputController extends Controller
 
     public function JaroWinkler(Request $request, $PREFIXSCALE = 0.1 ){
         $str                = $request->input_teks;
+        $input              = $str;
+        $str                = strtolower($str);
         $arr                = explode(" ", $str);
         $target             = DB::table('target')->pluck('Kata_Target')->toArray();
         $target             = array_map("trim", $target);
@@ -114,9 +116,10 @@ class InputController extends Controller
         
 
         for($i = 0; $i<count($arr); $i++){
+            $arr[$i] = strtolower($arr[$i]); 
             for($x = 0; $x<count($arr1); $x++){
                 if($arr[$i] == $arr1[$x]){
-                    $arr[$i] = strtolower($arr[$i]);
+                   
                     //mencari nilai jwd tertinggi
                     for($j = 0; $j<count($target); $j++){
                         $JaroDistance = $this->Jaro( $arr[$i], $target[$j] );
@@ -131,7 +134,8 @@ class InputController extends Controller
                         $arr[$i] = $kata[$i];
                         $arr[$i] = "<b>$arr[$i]</b>";
                         $katasalah[] = $arr[$i];
-                    }else if($max >= 0.92 && $max < 0.96){
+                    }
+                    else if($max >= 0.92 && $max < 0.96){
                         $jml_katasuggest[] = $arr[$i];
                         $suggest = $arrjwd;
                         arsort($suggest);
@@ -153,9 +157,14 @@ class InputController extends Controller
         $jml_kata           = count($katasalah);
         $jml_hasilsuggest    = count($katasuggest);
         $hasil              = implode(" ", $arr);
-
+/* 
+        print_r($jwdsuggest);
+        echo "NIlai jwd auto: ";
+        print_r($max); */
         
         return view('output')->with([
+            'input'             => $input,
+            'arr1'              => $arr1,
             'hasil'             => $hasil, 
             'jml_kata'          => $jml_kata, 
             'str'               => $str, 
